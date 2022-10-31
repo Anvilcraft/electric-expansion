@@ -17,17 +17,36 @@ buildscript {
 
 apply plugin: 'forge'
 
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+sourceSets {
+    api {}
+}
+
 version = "1.0"
-group= "modgroup"
-archivesBaseName = "modid"
+group = "universalelectricity"
+archivesBaseName = "electricexpansion"
 
 minecraft {
     version = "1.7.10-10.13.4.1614-1.7.10"
     runDir = "run"
 }
 
-dependencies {
+repositories {
+    maven { url = "https://maven.tilera.xyz" }
 
+    maven {
+        name 'central'
+        url 'https://maven.thorfusion.com/artifactory/central/'
+    }
+}
+
+dependencies {
+    compile "codechicken:NotEnoughItems:1.7.10-1.0.5.120:dev"
+    compile "codechicken:CodeChickenCore:1.7.10-1.0.7.48:dev"
+   compile "codechicken:CodeChickenLib:1.7.10-1.1.3.141:dev"
+    compile "universalelectricity:basiccomponents:1.0.2-dirty:deobf"
 }
 
 processResources
