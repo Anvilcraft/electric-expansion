@@ -27,8 +27,8 @@ public class RecipeRegistery {
         RecipeHelper.removeRecipe(wire);
       }
     }
-    FurnaceRecipes.smelting().func_151396_a(
-        ElectricExpansionItems.itemParts, // 3,
+    FurnaceRecipes.smelting().func_151394_a(
+        new ItemStack(ElectricExpansionItems.itemParts, 1, 3),
         new ItemStack(ElectricExpansionItems.itemParts, 4, 4), 0.0f);
     try {
       RecipeRegistery.camo =
@@ -187,8 +187,8 @@ public class RecipeRegistery {
         new ItemStack(ElectricExpansionItems.itemParts, 1, 1),
         new Object[] {"!#!", "#@#", "!#!", '#', Items.gold_ingot, '!',
                       "ingotSilver", '@', Items.ender_eye}));
-    FurnaceRecipes.smelting().func_151396_a(
-        ElectricExpansionItems.itemParts, // 1,
+    FurnaceRecipes.smelting().func_151394_a(
+        new ItemStack(ElectricExpansionItems.itemParts, 1, 1),
         new ItemStack(ElectricExpansionItems.itemParts, 4, 2), 0.0f);
     GameRegistry.addShapelessRecipe(
         new ItemStack(ElectricExpansionItems.itemParts, 9, 7),
