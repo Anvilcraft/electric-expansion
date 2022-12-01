@@ -8,15 +8,14 @@ import java.util.List;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
-// TODO: WTF
-// import universalelectricity.prefab.modifier.IModifier;
+import universalelectricity.prefab.modifier.IModifier;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.StatCollector;
 import universalelectricity.core.electricity.ElectricityDisplay;
 
-public class ItemUpgrade extends Item /* implements IModifier */ {
+public class ItemUpgrade extends Item implements IModifier {
     private String[] names;
     private IIcon[] icons;
     @SideOnly(Side.CLIENT)
@@ -65,7 +64,7 @@ public class ItemUpgrade extends Item /* implements IModifier */ {
         }
     }
 
-    //@Override
+    @Override
     public String getType(final ItemStack itemstack) {
         switch (itemstack.getItemDamage()) {
             case 0:
@@ -96,7 +95,7 @@ public class ItemUpgrade extends Item /* implements IModifier */ {
         }
     }
 
-    //@Override
+    @Override
     public double getEffectiveness(final ItemStack itemstack) {
         switch (itemstack.getItemDamage()) {
             case 0: {
@@ -170,7 +169,7 @@ public class ItemUpgrade extends Item /* implements IModifier */ {
         }
     }
 
-    //@Override
+    @Override
     public int getTier(final ItemStack i) {
         switch (i.getItemDamage()) {
             case 0: {

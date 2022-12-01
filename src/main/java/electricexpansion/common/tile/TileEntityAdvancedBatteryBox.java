@@ -27,6 +27,7 @@ import universalelectricity.core.item.IItemElectric;
 import universalelectricity.core.vector.Vector3;
 import universalelectricity.core.vector.VectorHelper;
 import universalelectricity.prefab.implement.IRedstoneProvider;
+import universalelectricity.prefab.modifier.IModifier;
 import universalelectricity.prefab.tile.TileEntityElectricityStorage;
 
 public class TileEntityAdvancedBatteryBox extends TileEntityElectricityStorage
@@ -244,28 +245,27 @@ public class TileEntityAdvancedBatteryBox extends TileEntityElectricityStorage
         double slot1 = 0.0;
         double slot2 = 0.0;
         double slot3 = 0.0;
-        // TODO: austri3Fix
-        // if (this.containingItems[2] != null &&
-        // this.containingItems[2].getItem() instanceof IModifier &&
-        // ((IModifier) this.containingItems[2].getItem())
-        // .getType(this.containingItems[2]) == "Capacity") {
-        // slot1 = ((IModifier) this.containingItems[2].getItem())
-        // .getEffectiveness(this.containingItems[2]);
-        // }
-        // if (this.containingItems[3] != null &&
-        // this.containingItems[3].getItem() instanceof IModifier &&
-        // ((IModifier) this.containingItems[3].getItem())
-        // .getType(this.containingItems[3]) == "Capacity") {
-        // slot2 = ((IModifier) this.containingItems[3].getItem())
-        // .getEffectiveness(this.containingItems[3]);
-        // }
-        // if (this.containingItems[4] != null &&
-        // this.containingItems[4].getItem() instanceof IModifier &&
-        // ((IModifier) this.containingItems[4].getItem())
-        // .getType(this.containingItems[4]) == "Capacity") {
-        // slot3 = ((IModifier) this.containingItems[4].getItem())
-        // .getEffectiveness(this.containingItems[4]);
-        // }
+        if (this.containingItems[2] != null &&
+                this.containingItems[2].getItem() instanceof IModifier &&
+                ((IModifier) this.containingItems[2].getItem())
+                        .getType(this.containingItems[2]) == "Capacity") {
+            slot1 = ((IModifier) this.containingItems[2].getItem())
+                    .getEffectiveness(this.containingItems[2]);
+        }
+        if (this.containingItems[3] != null &&
+                this.containingItems[3].getItem() instanceof IModifier &&
+                ((IModifier) this.containingItems[3].getItem())
+                        .getType(this.containingItems[3]) == "Capacity") {
+            slot2 = ((IModifier) this.containingItems[3].getItem())
+                    .getEffectiveness(this.containingItems[3]);
+        }
+        if (this.containingItems[4] != null &&
+                this.containingItems[4].getItem() instanceof IModifier &&
+                ((IModifier) this.containingItems[4].getItem())
+                        .getType(this.containingItems[4]) == "Capacity") {
+            slot3 = ((IModifier) this.containingItems[4].getItem())
+                    .getEffectiveness(this.containingItems[4]);
+        }
         return 5000000.0 + slot1 + slot2 + slot3;
     }
 
@@ -314,28 +314,27 @@ public class TileEntityAdvancedBatteryBox extends TileEntityElectricityStorage
         double slot1 = 1.0;
         double slot2 = 1.0;
         double slot3 = 1.0;
-        // TODO: austri3Fix
-        // if (this.containingItems[2] != null &&
-        // this.containingItems[2].getItem() instanceof IModifier &&
-        // ((IModifier) this.containingItems[2].getItem())
-        // .getType(this.containingItems[2]) == type) {
-        // slot1 = ((IModifier) this.containingItems[2].getItem())
-        // .getEffectiveness(this.containingItems[2]);
-        // }
-        // if (this.containingItems[3] != null &&
-        // this.containingItems[3].getItem() instanceof IModifier &&
-        // ((IModifier) this.containingItems[3].getItem())
-        // .getType(this.containingItems[3]) == type) {
-        // slot2 = ((IModifier) this.containingItems[3].getItem())
-        // .getEffectiveness(this.containingItems[3]);
-        // }
-        // if (this.containingItems[4] != null &&
-        // this.containingItems[4].getItem() instanceof IModifier &&
-        // ((IModifier) this.containingItems[4].getItem())
-        // .getType(this.containingItems[4]) == type) {
-        // slot3 = ((IModifier) this.containingItems[4].getItem())
-        // .getEffectiveness(this.containingItems[4]);
-        // }
+        if (this.containingItems[2] != null &&
+                this.containingItems[2].getItem() instanceof IModifier &&
+                ((IModifier) this.containingItems[2].getItem())
+                        .getType(this.containingItems[2]) == type) {
+            slot1 = ((IModifier) this.containingItems[2].getItem())
+                    .getEffectiveness(this.containingItems[2]);
+        }
+        if (this.containingItems[3] != null &&
+                this.containingItems[3].getItem() instanceof IModifier &&
+                ((IModifier) this.containingItems[3].getItem())
+                        .getType(this.containingItems[3]) == type) {
+            slot2 = ((IModifier) this.containingItems[3].getItem())
+                    .getEffectiveness(this.containingItems[3]);
+        }
+        if (this.containingItems[4] != null &&
+                this.containingItems[4].getItem() instanceof IModifier &&
+                ((IModifier) this.containingItems[4].getItem())
+                        .getType(this.containingItems[4]) == type) {
+            slot3 = ((IModifier) this.containingItems[4].getItem())
+                    .getEffectiveness(this.containingItems[4]);
+        }
         return slot1 * slot2 * slot3;
     }
 
@@ -343,28 +342,27 @@ public class TileEntityAdvancedBatteryBox extends TileEntityElectricityStorage
         double slot1 = 0.0;
         double slot2 = 0.0;
         double slot3 = 0.0;
-        // TODO: austri3Fix
-        // if (this.containingItems[2] != null &&
-        // this.containingItems[2].getItem() instanceof IModifier &&
-        // ((IModifier) this.containingItems[2].getItem())
-        // .getType(this.containingItems[2]) == "Unlimiter") {
-        // slot1 = ((IModifier) this.containingItems[2].getItem())
-        // .getEffectiveness(this.containingItems[2]);
-        // }
-        // if (this.containingItems[3] != null &&
-        // this.containingItems[3].getItem() instanceof IModifier &&
-        // ((IModifier) this.containingItems[3].getItem())
-        // .getType(this.containingItems[3]) == "Unlimiter") {
-        // slot2 = ((IModifier) this.containingItems[3].getItem())
-        // .getEffectiveness(this.containingItems[3]);
-        // }
-        // if (this.containingItems[4] != null &&
-        // this.containingItems[4].getItem() instanceof IModifier &&
-        // ((IModifier) this.containingItems[4].getItem())
-        // .getType(this.containingItems[4]) == "Unlimiter") {
-        // slot3 = ((IModifier) this.containingItems[4].getItem())
-        // .getEffectiveness(this.containingItems[4]);
-        // }
+        if (this.containingItems[2] != null &&
+                this.containingItems[2].getItem() instanceof IModifier &&
+                ((IModifier) this.containingItems[2].getItem())
+                        .getType(this.containingItems[2]) == "Unlimiter") {
+            slot1 = ((IModifier) this.containingItems[2].getItem())
+                    .getEffectiveness(this.containingItems[2]);
+        }
+        if (this.containingItems[3] != null &&
+                this.containingItems[3].getItem() instanceof IModifier &&
+                ((IModifier) this.containingItems[3].getItem())
+                        .getType(this.containingItems[3]) == "Unlimiter") {
+            slot2 = ((IModifier) this.containingItems[3].getItem())
+                    .getEffectiveness(this.containingItems[3]);
+        }
+        if (this.containingItems[4] != null &&
+                this.containingItems[4].getItem() instanceof IModifier &&
+                ((IModifier) this.containingItems[4].getItem())
+                        .getType(this.containingItems[4]) == "Unlimiter") {
+            slot3 = ((IModifier) this.containingItems[4].getItem())
+                    .getEffectiveness(this.containingItems[4]);
+        }
         return (100.0 + slot1) * (100.0 + slot2) * (100.0 + slot3) / 1000000.0 *
                 10000.0;
     }

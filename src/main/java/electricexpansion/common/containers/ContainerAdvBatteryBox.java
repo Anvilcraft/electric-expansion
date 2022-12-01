@@ -8,6 +8,7 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import universalelectricity.core.item.IItemElectric;
+import universalelectricity.prefab.modifier.SlotModifier;
 
 public class ContainerAdvBatteryBox extends Container {
     private TileEntityAdvancedBatteryBox tileEntity;
@@ -19,12 +20,8 @@ public class ContainerAdvBatteryBox extends Container {
                 (IInventory) advBatteryBox, 0, 11, 24));
         this.addSlotToContainer((Slot) new SlotUniversalElectricItem(
                 (IInventory) advBatteryBox, 1, 11, 48));
-        // TODO: WTF
-        // this.addSlotToContainer((Slot)new SlotModifier((IInventory)advBatteryBox,
-        // 2, 149, 7)); this.addSlotToContainer((Slot)new
-        // SlotModifier((IInventory)advBatteryBox, 3, 149, 31));
-        // this.addSlotToContainer((Slot)new SlotModifier((IInventory)advBatteryBox,
-        // 4, 149, 55));
+        this.addSlotToContainer((Slot)new SlotModifier((IInventory)advBatteryBox, 2, 149, 7)); this.addSlotToContainer((Slot)new SlotModifier((IInventory)advBatteryBox, 3, 149, 31));
+        this.addSlotToContainer((Slot)new SlotModifier((IInventory)advBatteryBox, 4, 149, 55));
         this.addSlotToContainer(new Slot((IInventory) advBatteryBox, 2, 149, 7));
         this.addSlotToContainer(new Slot((IInventory) advBatteryBox, 3, 149, 31));
         this.addSlotToContainer(new Slot((IInventory) advBatteryBox, 4, 149, 55));

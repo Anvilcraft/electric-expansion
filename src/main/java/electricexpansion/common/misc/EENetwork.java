@@ -118,7 +118,7 @@ public class EENetwork implements IElectricityNetwork
                                 for (final Vector3 node2 : (Iterable<Vector3>)finder.closedSet) {
                                     final TileEntity nodeTile2 = node2.getTileEntity((IBlockAccess)((TileEntity)splitPoint).getWorldObj());
                                     if (nodeTile2 instanceof INetworkProvider && nodeTile2 != splitPoint) {
-                                        newNetwork.getConductors().add(nodeTile2);
+                                        newNetwork.getConductors().add((IConductor) nodeTile2);
                                     }
                                 }
                                 newNetwork.cleanUpConductors();
@@ -352,5 +352,13 @@ public class EENetwork implements IElectricityNetwork
     
     public void addRsInterfacer(final IRedstoneNetAccessor interfacer) {
         this.redstoneInterfacers.add(interfacer);
+    }
+
+    public boolean isInactive() {
+        return false;
+    }
+
+    public void tick() {
+        
     }
 }
