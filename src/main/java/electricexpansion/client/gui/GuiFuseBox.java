@@ -10,7 +10,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 import org.lwjgl.opengl.GL11;
-import universalelectricity.core.electricity.ElectricityDisplay;
+
+import universalelectricity.api.energy.UnitDisplay;
 import universalelectricity.prefab.TranslationHelper;
 
 public class GuiFuseBox extends GuiContainer {
@@ -42,8 +43,8 @@ public class GuiFuseBox extends GuiContainer {
         this.fontRendererObj.drawString(
                 TranslationHelper.getLocal(this.tileEntity.getInventoryName()), 8, 6,
                 4210752);
-        final String displayVoltage = ElectricityDisplay.getDisplayShort(
-                this.tileEntity.getVoltage(), ElectricityDisplay.ElectricUnit.VOLTAGE);
+        final String displayVoltage = UnitDisplay.getDisplayShort(
+                this.tileEntity.getVoltage(), UnitDisplay.Unit.VOLTAGE);
         this.fontRendererObj.drawString(
                 StatCollector.translateToLocal("container.voltage") + ": " +
                         displayVoltage,

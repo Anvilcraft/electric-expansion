@@ -11,10 +11,10 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.World;
+import universalelectricity.api.energy.UnitDisplay;
 import universalelectricity.core.block.IConductor;
 import universalelectricity.core.block.IElectricityStorage;
 import universalelectricity.core.block.IVoltage;
-import universalelectricity.core.electricity.ElectricityDisplay;
 import universalelectricity.core.electricity.ElectricityPack;
 import universalelectricity.core.item.ItemElectric;
 
@@ -42,36 +42,36 @@ public class ItemMultimeter extends ItemElectric {
             final ElectricityPack getProduced = wireTile.getNetwork().getProduced(new TileEntity[0]);
             player.addChatMessage(new ChatComponentText(
                     "Electric Expansion: " +
-                            ElectricityDisplay.getDisplay(
-                                    getProduced.amperes * 20.0, ElectricityDisplay.ElectricUnit.AMPERE)
+                            UnitDisplay.getDisplay(
+                                    getProduced.amperes * 20.0, UnitDisplay.Unit.AMPERE)
                             +
                             ", " +
-                            ElectricityDisplay.getDisplay(
-                                    getProduced.voltage, ElectricityDisplay.ElectricUnit.VOLTAGE)
+                            UnitDisplay.getDisplay(
+                                    getProduced.voltage, UnitDisplay.Unit.VOLTAGE)
                             +
                             ", " +
-                            ElectricityDisplay.getDisplay(getProduced.getWatts() * 20.0,
-                                    ElectricityDisplay.ElectricUnit.WATT)));
+                            UnitDisplay.getDisplay(getProduced.getWatts() * 20.0,
+                                    UnitDisplay.Unit.WATT)));
             return true;
         }
         if (tileEntity instanceof IElectricityStorage) {
             final IElectricityStorage tileStorage = (IElectricityStorage) tileEntity;
             player.addChatMessage(new ChatComponentText(
                     "Electric Expansion: " +
-                            ElectricityDisplay.getDisplay(
-                                    tileStorage.getJoules(), ElectricityDisplay.ElectricUnit.JOULES)
+                            UnitDisplay.getDisplay(
+                                    tileStorage.getJoules(), UnitDisplay.Unit.JOULES)
                             +
                             "/" +
-                            ElectricityDisplay.getDisplay(
+                            UnitDisplay.getDisplay(
                                     tileStorage.getMaxJoules(),
-                                    ElectricityDisplay.ElectricUnit.JOULES)));
+                                    UnitDisplay.Unit.JOULES)));
         }
         if (tileEntity instanceof IVoltage) {
             player.addChatMessage(
                     new ChatComponentText("Electric Expansion: " +
-                            ElectricityDisplay.getDisplay(
+                            UnitDisplay.getDisplay(
                                     ((IVoltage) tileEntity).getVoltage(),
-                                    ElectricityDisplay.ElectricUnit.VOLTAGE)));
+                                    UnitDisplay.Unit.VOLTAGE)));
         }
         return true;
     }

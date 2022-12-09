@@ -11,7 +11,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
-import universalelectricity.core.electricity.ElectricityDisplay;
+import universalelectricity.api.energy.UnitDisplay;
 
 public abstract class ItemBlockCableHelper extends ItemBlock {
     protected HashMap<String, IIcon> icons;
@@ -38,14 +38,14 @@ public abstract class ItemBlockCableHelper extends ItemBlock {
             final boolean par4) {
         par3List.add(
                 "Resistance: " +
-                        ElectricityDisplay.getDisplay(
+                        UnitDisplay.getDisplay(
                                 EnumWireMaterial.values()[itemstack.getItemDamage()].resistance,
-                                ElectricityDisplay.ElectricUnit.RESISTANCE));
+                                UnitDisplay.Unit.RESISTANCE));
         par3List.add(
                 "Max Amps: " +
-                        ElectricityDisplay.getDisplay(
+                        UnitDisplay.getDisplay(
                                 EnumWireMaterial.values()[itemstack.getItemDamage()].maxAmps,
-                                ElectricityDisplay.ElectricUnit.AMPERE));
+                                UnitDisplay.Unit.AMPERE));
     }
 
     @SideOnly(Side.CLIENT)

@@ -14,7 +14,8 @@ import net.minecraft.inventory.Container;
 import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
-import universalelectricity.core.electricity.ElectricityDisplay;
+
+import universalelectricity.api.energy.UnitDisplay;
 import universalelectricity.core.vector.Vector3;
 import universalelectricity.prefab.TranslationHelper;
 
@@ -49,9 +50,9 @@ public class GuiQuantumBatteryBox extends GuiContainer {
     protected void drawGuiContainerForegroundLayer(final int par1,
             final int par2) {
         this.textFieldFrequency.drawTextBox();
-        final String displayJoules = ElectricityDisplay.getDisplayShort(
+        final String displayJoules = UnitDisplay.getDisplayShort(
                 this.tileEntity.getJoulesForDisplay(new Object[0]),
-                ElectricityDisplay.ElectricUnit.JOULES);
+                UnitDisplay.Unit.JOULES);
         this.fontRendererObj.drawString(
                 TranslationHelper.getLocal(this.tileEntity.getInventoryName()), 42, 6,
                 4210752);

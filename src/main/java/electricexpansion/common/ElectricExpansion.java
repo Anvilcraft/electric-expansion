@@ -69,7 +69,7 @@ import universalelectricity.prefab.ore.OreGenReplaceStone;
 import universalelectricity.prefab.ore.OreGenerator;
 
 @Mod(
-    modid = "ElectricExpansion", name = "Electric Expansion", version = "2.1.0",
+    modid = "ElectricExpansion", name = "Electric Expansion", version = ElectricExpansion.VERSION,
     dependencies =
         "after:basiccomponents;after:AtomicScience;after:ICBM|Contraption;after:MineFactoryReloaded;after:IC2",
     useMetadata = true)
@@ -80,7 +80,7 @@ public class ElectricExpansion {
   public static final String BUILD_VERSION = "43";
   public static final String MOD_ID = "ElectricExpansion";
   public static final String MOD_NAME = "Electric Expansion";
-  public static final String VERSION = "2.1.0";
+  public static final String VERSION = "1.0.0";
   public static final boolean USE_METADATA = true;
   public static final boolean USES_CLIENT = true;
   public static final boolean USES_SERVER = false;

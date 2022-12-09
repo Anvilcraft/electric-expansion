@@ -10,7 +10,8 @@ import net.minecraft.inventory.Container;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 import org.lwjgl.opengl.GL11;
-import universalelectricity.core.electricity.ElectricityDisplay;
+
+import universalelectricity.api.energy.UnitDisplay;
 import universalelectricity.prefab.TranslationHelper;
 
 @SideOnly(Side.CLIENT)
@@ -32,15 +33,15 @@ public class GuiAdvancedBatteryBox extends GuiContainer {
         this.fontRendererObj.drawString(
                 TranslationHelper.getLocal(this.tileEntity.getInventoryName()), 22, 6,
                 4210752);
-        final String displayJoules = ElectricityDisplay.getDisplayShort(
-                this.tileEntity.getJoules(), ElectricityDisplay.ElectricUnit.JOULES);
-        String displayMaxJoules = ElectricityDisplay.getDisplayShort(
-                this.tileEntity.getMaxJoules(), ElectricityDisplay.ElectricUnit.JOULES);
-        final String displayInputVoltage = ElectricityDisplay.getDisplayShort(
+        final String displayJoules = UnitDisplay.getDisplayShort(
+                this.tileEntity.getJoules(), UnitDisplay.Unit.JOULES);
+        String displayMaxJoules = UnitDisplay.getDisplayShort(
+                this.tileEntity.getMaxJoules(), UnitDisplay.Unit.JOULES);
+        final String displayInputVoltage = UnitDisplay.getDisplayShort(
                 this.tileEntity.getInputVoltage(),
-                ElectricityDisplay.ElectricUnit.VOLTAGE);
-        final String displayOutputVoltage = ElectricityDisplay.getDisplayShort(
-                this.tileEntity.getVoltage(), ElectricityDisplay.ElectricUnit.VOLTAGE);
+                UnitDisplay.Unit.VOLTAGE);
+        final String displayOutputVoltage = UnitDisplay.getDisplayShort(
+                this.tileEntity.getVoltage(), UnitDisplay.Unit.VOLTAGE);
         if (this.tileEntity.isDisabled()) {
             displayMaxJoules = "Disabled";
         }

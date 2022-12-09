@@ -10,8 +10,9 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
+import universalelectricity.api.energy.UnitDisplay;
+
 import org.lwjgl.opengl.GL11;
-import universalelectricity.core.electricity.ElectricityDisplay;
 
 @SideOnly(Side.CLIENT)
 public class GuiWireMill extends GuiContainer {
@@ -39,16 +40,16 @@ public class GuiWireMill extends GuiContainer {
         }
         this.fontRendererObj.drawString("Status: " + displayText, 82, 45, 4210752);
         this.fontRendererObj.drawString(
-                "Voltage: " + ElectricityDisplay.getDisplayShort(
+                "Voltage: " + UnitDisplay.getDisplayShort(
                         this.tileEntity.getVoltage(),
-                        ElectricityDisplay.ElectricUnit.VOLTAGE),
+                        UnitDisplay.Unit.VOLTAGE),
                 82, 56, 4210752);
         final FontRenderer fontRendererObj = this.fontRendererObj;
         final StringBuilder append = new StringBuilder().append("Require: ");
         fontRendererObj.drawString(
                 append
-                        .append(ElectricityDisplay.getDisplayShort(
-                                500.0 * 20.0, ElectricityDisplay.ElectricUnit.WATT))
+                        .append(UnitDisplay.getDisplayShort(
+                                500.0 * 20.0, UnitDisplay.Unit.WATT))
                         .toString(),
                 82, 68, 4210752);
         this.fontRendererObj.drawString(

@@ -8,12 +8,12 @@ import java.util.List;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import universalelectricity.api.energy.UnitDisplay;
 import universalelectricity.prefab.modifier.IModifier;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.StatCollector;
-import universalelectricity.core.electricity.ElectricityDisplay;
 
 public class ItemUpgrade extends Item implements IModifier {
     private String[] names;
@@ -148,8 +148,8 @@ public class ItemUpgrade extends Item implements IModifier {
         String strength = "";
         final double effectiveness = this.getEffectiveness(itemstack);
         if (this.getType(itemstack).equals("Capacity")) {
-            strength = ElectricityDisplay.getDisplay(this.getEffectiveness(itemstack),
-                    ElectricityDisplay.ElectricUnit.JOULES);
+            strength = UnitDisplay.getDisplay(this.getEffectiveness(itemstack),
+                    UnitDisplay.Unit.JOULES);
         } else if (effectiveness < 0.0) {
             strength = "1/" + String.valueOf(effectiveness * -1.0);
         } else {

@@ -9,7 +9,8 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.common.util.ForgeDirection;
 import org.lwjgl.opengl.GL11;
-import universalelectricity.core.electricity.ElectricityDisplay;
+
+import universalelectricity.api.energy.UnitDisplay;
 import universalelectricity.core.vector.VectorHelper;
 
 @SideOnly(Side.CLIENT)
@@ -75,14 +76,14 @@ public class RenderMultimeter extends TileEntitySpecialRenderer {
                 GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
                 final FontRenderer fontRenderer = this.func_147498_b();
                 int maxWidth = 1;
-                final String amperes = ElectricityDisplay.getDisplay(
+                final String amperes = UnitDisplay.getDisplay(
                         te.electricityReading.amperes,
-                        ElectricityDisplay.ElectricUnit.AMPERE);
-                final String voltage = ElectricityDisplay.getDisplay(
+                        UnitDisplay.Unit.AMPERE);
+                final String voltage = UnitDisplay.getDisplay(
                         te.electricityReading.voltage,
-                        ElectricityDisplay.ElectricUnit.VOLTAGE);
-                final String watt = ElectricityDisplay.getDisplay(te.electricityReading.getWatts(),
-                        ElectricityDisplay.ElectricUnit.WATT);
+                        UnitDisplay.Unit.VOLTAGE);
+                final String watt = UnitDisplay.getDisplay(te.electricityReading.getWatts(),
+                        UnitDisplay.Unit.WATT);
                 maxWidth = Math.max(fontRenderer.getStringWidth(amperes), maxWidth);
                 maxWidth = Math.max(fontRenderer.getStringWidth(voltage), maxWidth);
                 maxWidth = Math.max(fontRenderer.getStringWidth(watt), maxWidth);

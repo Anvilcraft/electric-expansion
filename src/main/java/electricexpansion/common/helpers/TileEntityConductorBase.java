@@ -16,9 +16,12 @@ import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraftforge.common.util.ForgeDirection;
+import universalelectricity.compat.CompatHandler;
 import universalelectricity.core.block.IConductor;
 import universalelectricity.core.block.IConnector;
 import universalelectricity.core.block.INetworkProvider;
+import universalelectricity.core.block.ISelfDriven;
+import universalelectricity.core.electricity.ElectricityNetworkHelper;
 import universalelectricity.core.electricity.IElectricityNetwork;
 import universalelectricity.core.vector.Vector3;
 import universalelectricity.core.vector.VectorHelper;
@@ -122,7 +125,7 @@ public abstract class TileEntityConductorBase
 
     public void updateConnection(final TileEntity tileEntity,
             final ForgeDirection side) {
-        if (!this.getWorldObj().isRemote && tileEntity != null) {
+        if (!this.getWorldObj().isRemote) {
             if (tileEntity instanceof TileEntityInsulatedWire &&
                     this instanceof TileEntityInsulatedWire) {
                 final TileEntityInsulatedWire tileEntityIns = (TileEntityInsulatedWire) tileEntity;
@@ -156,18 +159,27 @@ public abstract class TileEntityConductorBase
                     }
                     return;
                 }
-            } else if (((IConnector) tileEntity).canConnect(side.getOpposite())) {
+            } else if (ElectricityNetworkHelper.canConnect(tileEntity, side.getOpposite(), this)) {
                 this.connectedBlocks[side.ordinal()] = tileEntity;
                 this.visuallyConnected[side.ordinal()] = true;
                 if (tileEntity.getClass() == this.getClass() && tileEntity instanceof INetworkProvider) {
                     this.getNetwork().mergeConnection(
                             ((INetworkProvider) tileEntity).getNetwork());
+                } else if (!(tileEntity instanceof ISelfDriven)) {
+                    CompatHandler.registerTile(tileEntity);
                 }
+
                 return;
             }
+
+            if(this.connectedBlocks[side.ordinal()] != null) {
+                this.getNetwork().stopProducing(this.connectedBlocks[side.ordinal()]);
+                this.getNetwork().stopRequesting(this.connectedBlocks[side.ordinal()]);
+             }
+    
+             this.connectedBlocks[side.ordinal()] = null;
+             this.visuallyConnected[side.ordinal()] = false;
         }
-        this.connectedBlocks[side.ordinal()] = null;
-        this.visuallyConnected[side.ordinal()] = false;
     }
 
     @Override
@@ -234,12 +246,9 @@ public abstract class TileEntityConductorBase
     public void updateAdjacentConnections() {
         if (this.getWorldObj() != null && !this.worldObj.isRemote) {
             final boolean[] previousConnections = this.visuallyConnected.clone();
-            for (byte i = 0; i < 6; ++i) {
-                this.updateConnection(VectorHelper.getConnectorFromSide(
-                        this.getWorldObj(), new Vector3(this),
-                        ForgeDirection.getOrientation((int) i)),
-                        ForgeDirection.getOrientation((int) i));
-            }
+            for(byte i = 0; i < 6; ++i) {
+                this.updateConnection(VectorHelper.getTileEntityFromSide(this.worldObj, new Vector3(this), ForgeDirection.getOrientation(i)), ForgeDirection.getOrientation(i));
+             }
             if (!Arrays.equals(previousConnections, this.visuallyConnected)) {
                 this.getWorldObj().markBlockForUpdate(this.xCoord, this.yCoord,
                         this.zCoord);

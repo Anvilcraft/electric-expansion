@@ -354,11 +354,40 @@ public class EENetwork implements IElectricityNetwork
         this.redstoneInterfacers.add(interfacer);
     }
 
-    public boolean isInactive() {
-        return false;
-    }
+    @Override
+   public void addConnector(IConductor connector) {
+      this.conductors.add(connector);
+   }
 
-    public void tick() {
-        
-    }
+   @Override
+   public void removeConnector(IConductor connector) {
+      this.conductors.remove(connector);
+   }
+
+   @Override
+   public Set<IConductor> getConnectors() {
+      return this.conductors;
+   }
+
+   @Override
+   public void reconstruct() {
+      refreshConductors();
+   }
+
+   @Override
+   public IElectricityNetwork merge(IElectricityNetwork network) {
+      this.mergeConnection(network);
+      return this;
+   }
+
+   @Override
+   public void split(IConductor connection) {
+      splitNetwork(connection);
+   }
+
+   @Override
+   public void split(IConductor connectorA, IConductor connectorB) {
+      // TODO: implement this
+   }
+
 }
