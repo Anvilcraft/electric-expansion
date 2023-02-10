@@ -4,6 +4,7 @@ import dan200.computercraft.api.lua.ILuaContext;
 import dan200.computercraft.api.lua.LuaException;
 import dan200.computercraft.api.peripheral.IComputerAccess;
 import dan200.computercraft.api.peripheral.IPeripheral;
+import electricexpansion.api.IBatteryBoxPreipheral;
 import electricexpansion.api.IWirelessPowerMachine;
 import electricexpansion.common.ElectricExpansion;
 import electricexpansion.common.helpers.PacketUpdateQuantumBatteryBoxFrequency;
@@ -26,7 +27,7 @@ import universalelectricity.core.vector.VectorHelper;
 import universalelectricity.prefab.tile.TileEntityElectricityStorage;
 
 public class TileEntityQuantumBatteryBox extends TileEntityElectricityStorage
-    implements IWirelessPowerMachine, IInventory, IPeripheral {
+    implements IWirelessPowerMachine, IInventory, IBatteryBoxPreipheral {
   private ItemStack[] containingItems;
   private int playersUsing;
   private byte frequency;

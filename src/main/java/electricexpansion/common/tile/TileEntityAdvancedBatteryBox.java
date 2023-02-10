@@ -4,6 +4,8 @@ import dan200.computercraft.api.lua.ILuaContext;
 import dan200.computercraft.api.lua.LuaException;
 import dan200.computercraft.api.peripheral.IComputerAccess;
 import dan200.computercraft.api.peripheral.IPeripheral;
+import electricexpansion.api.IBatteryBoxPreipheral;
+
 import java.util.EnumSet;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -31,7 +33,7 @@ import universalelectricity.prefab.modifier.IModifier;
 import universalelectricity.prefab.tile.TileEntityElectricityStorage;
 
 public class TileEntityAdvancedBatteryBox extends TileEntityElectricityStorage
-        implements IRedstoneProvider, ISidedInventory, IPeripheral {
+        implements IRedstoneProvider, ISidedInventory, IBatteryBoxPreipheral {
     private ItemStack[] containingItems;
     private int playersUsing;
 

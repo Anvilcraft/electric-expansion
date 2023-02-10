@@ -13,6 +13,7 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
+import dan200.computercraft.api.ComputerCraftAPI;
 import electricexpansion.api.ElectricExpansionItems;
 import electricexpansion.common.blocks.BlockAdvancedBatteryBox;
 import electricexpansion.common.blocks.BlockBasic;
@@ -29,6 +30,7 @@ import electricexpansion.common.blocks.BlockSwitchWireBlock;
 import electricexpansion.common.blocks.BlockTransformer;
 import electricexpansion.common.blocks.BlockWireBlock;
 import electricexpansion.common.blocks.BlockWireMill;
+import electricexpansion.common.helpers.BatteryBoxPeripheralProvider;
 import electricexpansion.common.helpers.PacketHandlerLogisticsWireButton;
 import electricexpansion.common.helpers.PacketHandlerUpdateQuantumBatteryBoxFrequency;
 import electricexpansion.common.helpers.PacketLogisticsWireButton;
@@ -310,6 +312,7 @@ public class ElectricExpansion {
     }
     OreGenerator.addOre(ElectricExpansion.silverOreGeneration);
     UniversalElectricity.isNetworkActive = true;
+    ComputerCraftAPI.registerPeripheralProvider(new BatteryBoxPeripheralProvider());
   }
 
   @Mod.EventHandler
