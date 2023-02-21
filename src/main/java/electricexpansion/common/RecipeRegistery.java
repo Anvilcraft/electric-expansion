@@ -64,7 +64,6 @@ public class RecipeRegistery {
                       new ItemStack(ElectricExpansionItems.blockInsulatedWire, 1, 0),
                       '%', "circuitBasic", '^', Blocks.glass, '@',
                       Items.stick}));
-    System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALEC " + ElectricExpansionItems.blockInsulatedWire);
     GameRegistry.addRecipe((IRecipe) new ShapedOreRecipe(
         new ItemStack(ElectricExpansionItems.blockAdvBatteryBox),
         new Object[] {"!!!", "@@@", "!#!", '!', "battery", '@', "copperWire",
